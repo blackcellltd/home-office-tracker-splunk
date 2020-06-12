@@ -40,14 +40,17 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 	
 	if ($fh.hash -eq $hash) {
 		
-		if (!$SplunkHost -or !$SplunkPort){
+		if (!$SplunkHost){
 			Write-Host 'Input your Splunk Host (Leave Empty for default):' -NoNewline -ForegroundColor "Yellow"
 			$SplunkHost = Read-Host
-			Write-Host 'Input your Splunk Port (Leave Empty for default):' -NoNewline -ForegroundColor "Yellow"
-			$SplunkPort = Read-Host
 			if (!$SplunkHost){
 				$SplunkHost = "ho.blackcell.io"
 			}
+		}
+		
+		if (!$SplunkPort){
+			Write-Host 'Input your Splunk Port (Leave Empty for default):' -NoNewline -ForegroundColor "Yellow"
+			$SplunkPort = Read-Host
 			if (!$SplunkPort) {
 				$SplunkPort = "58089"
 			}
